@@ -1,0 +1,7 @@
+optime_trivia_homepage:
+    path:     /
+    defaults: { _controller: OptimeTriviaBundle:Default:index }
+
+optime_trivia_list:
+    path:   /trivia
+    defaults: { _controller: OptimeTriviaBundle:Presentation:list}

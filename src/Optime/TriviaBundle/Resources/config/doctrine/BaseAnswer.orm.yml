@@ -1,0 +1,29 @@
+Optime\TriviaBundle\Entity\BaseAnswer:
+  type: entity
+  repositoryClass: Optime\TriviaBundle\Entity\repository\BaseAnswerRepository
+  table: optime_trivia_answers
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    text:
+      type: string
+      length: 500
+    points:
+      type: integer
+      length: 100
+    valid:
+      type: boolean
+      nullable: true
+    createdAt:
+      type: datetime
+      column: created_at
+    updatedAt:
+      type: datetime
+      column: updated_at
+  manyToOne:
+    question:
+      targetEntity: Optime\TriviaBundle\Entity\BaseQuestion
+      inversedBy: answers

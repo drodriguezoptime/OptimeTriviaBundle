@@ -1,0 +1,31 @@
+Optime\TriviaBundle\Entity\BaseQuestion:
+  type: entity
+  repositoryClass: Optime\TriviaBundle\Entity\repository\BaseQuestionRepository
+  table: optime_trivia_questions
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    type:
+      type: string
+      length: 255
+    text:
+      type: string
+      length: 500
+    createdAt:
+      type: datetime
+      column: created_at
+    updatedAt:
+      type: datetime
+      column: updated_at
+  oneToMany:
+    answers:
+      targetEntity: Optime\TriviaBundle\Entity\BaseAnswer
+      mappedBy: question
+      cascade: ["persist"]
+  manyToOne:
+    trivia:
+      targetEntity: Optime\TriviaBundle\Entity\BaseTrivia
+      inversedBy: questions

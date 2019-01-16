@@ -1,0 +1,2 @@
+parameters:
+  optime.trivia.manager.post.class: "Optime\TriviaBundle\Entity\Post

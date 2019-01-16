@@ -1,0 +1,35 @@
+Optime\TriviaBundle\Entity\BaseTrivia:
+  type: entity
+  repositoryClass: Optime\TriviaBundle\Entity\repository\BaseTriviaRepository
+  table: optime_trivia_list
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 500
+    startDate:
+      type: datetime
+      nullable: false
+    endDate:
+      type: datetime
+      nullable: false
+    state:
+      type: string
+      length: 255
+    createdAt:
+      type: datetime
+      column: created_at
+    updatedAt:
+      type: datetime
+      column: updated_at
+  oneToMany:
+    questions:
+      targetEntity: Optime\TriviaBundle\Entity\BaseQuestion
+      mappedBy: trivia
+    triviaAnswers:
+      targetEntity: Optime\TriviaBundle\Entity\BaseTriviaAnswer
+      mappedBy: trivia

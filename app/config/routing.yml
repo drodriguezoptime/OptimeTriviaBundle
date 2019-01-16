@@ -1,0 +1,7 @@
+optime_trivia:
+    resource: "@OptimeTriviaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
