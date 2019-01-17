@@ -1,0 +1,5 @@
+services:
+  optime.doctrine.mapper:
+    class: Optime\TriviaBundle\Mapper\DoctrineORMMapper
+    tags: ["doctrine.event_subscriber"]
+    arguments: ["@doctrine"]
