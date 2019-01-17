@@ -13,7 +13,7 @@ namespace Optime\TriviaBundle\Entity\repository;
 use Doctrine\ORM\EntityRepository;
 use Optime\TriviaBundle\Model\QuestionInterface;
 
-class BaseQuestionRepository extends EntityRepository
+class QuestionRepository extends EntityRepository
 {
     public function getResultFilters(QuestionInterface $data) {
         $query = $this->createQueryBuilder('c');

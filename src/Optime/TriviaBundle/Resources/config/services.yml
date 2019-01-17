@@ -2,6 +2,12 @@ services:
   Optime\TriviaBundle\Service\PresentationActions:
     class: Optime\TriviaBundle\Service\PresentationActions
     public: true
+    tags: ['controller.service_arguments']
     arguments:
       $entityManager: "@doctrine.orm.entity_manager"
       $currentUser: "@=service('security.token_storage').getToken().getUser()"
+      $templating: "@templating"
+  optime.doctrine.mapper:
+    class: Optime\TriviaBundle\Mapper\DoctrineORMMapper
+    tags: ["doctrine.event_subscriber"]
+    arguments: ["@doctrine"]

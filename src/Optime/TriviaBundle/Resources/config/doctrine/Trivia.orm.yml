@@ -1,6 +1,6 @@
-Optime\TriviaBundle\Entity\BaseTrivia:
+Optime\TriviaBundle\Entity\Trivia:
   type: entity
-  repositoryClass: Optime\TriviaBundle\Entity\repository\BaseTriviaRepository
+  repositoryClass: Optime\TriviaBundle\Entity\repository\TriviaRepository
   table: optime_trivia_list
   id:
     id:
@@ -28,8 +28,8 @@ Optime\TriviaBundle\Entity\BaseTrivia:
       column: updated_at
   oneToMany:
     questions:
-      targetEntity: Optime\TriviaBundle\Entity\BaseQuestion
+      targetEntity: Optime\TriviaBundle\Entity\Question
       mappedBy: trivia
     triviaAnswers:
-      targetEntity: Optime\TriviaBundle\Entity\BaseTriviaAnswer
+      targetEntity: Optime\TriviaBundle\Entity\TriviaAnswer
       mappedBy: trivia

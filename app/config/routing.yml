@@ -1,7 +1,10 @@
 optime_trivia:
     resource: "@OptimeTriviaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /trivia
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+homepage:
+    path:   /
+    defaults: { _controller: AppBundle:Default:index}

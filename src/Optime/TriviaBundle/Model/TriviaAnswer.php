@@ -93,14 +93,14 @@ abstract class TriviaAnswer implements TriviaAnswerInterface
         return $this->trivia;
     }
 
-    public function setUser(UserInterface $user = null)
+    public function setUser($user = null)
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getUser(): UserInterface
+    public function getUser()
     {
         return $this->user;
     }

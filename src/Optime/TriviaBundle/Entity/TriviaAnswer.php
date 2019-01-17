@@ -11,7 +11,7 @@ namespace Optime\TriviaBundle\Entity;
 
 use Optime\TriviaBundle\Model\TriviaAnswer as ModelTriviaAnswer;
 
-abstract class BaseTriviaAnswer extends ModelTriviaAnswer
+class TriviaAnswer extends ModelTriviaAnswer
 {
     protected $id;
 

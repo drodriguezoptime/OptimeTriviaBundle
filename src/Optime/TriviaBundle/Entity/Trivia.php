@@ -12,7 +12,7 @@ namespace Optime\TriviaBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Optime\TriviaBundle\Model\Trivia as ModelTrivia;
 
-abstract class BaseTrivia extends ModelTrivia
+class Trivia extends ModelTrivia
 {
     protected $id;
 

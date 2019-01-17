@@ -13,7 +13,7 @@ namespace Optime\TriviaBundle\Entity\repository;
 use Doctrine\ORM\EntityRepository;
 use Optime\TriviaBundle\Model\AnswerInterface;
 
-class BaseAnswerRepository extends EntityRepository
+class AnswerRepository extends EntityRepository
 {
     /**
      * @param AnswerInterface $data

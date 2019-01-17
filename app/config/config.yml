@@ -74,10 +74,6 @@ sensio_framework_extra:
   router:
     annotations: false
 
-optime_trivia:
-  class:
-    user: Aplication\AppBundle\Entity\User
-
 fos_user:
   db_driver: orm
   user_class: AppBundle\Entity\User

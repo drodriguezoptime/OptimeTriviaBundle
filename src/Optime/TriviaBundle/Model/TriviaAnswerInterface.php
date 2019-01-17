@@ -25,8 +25,8 @@ interface TriviaAnswerInterface
     public function getNumEmpty(): int;
     public function setTrivia(TriviaInterface $trivia = null);
     public function getTrivia(): TriviaInterface;
-    public function setUser(UserInterface $user = null);
-    public function getUser(): UserInterface;
+    public function setUser($user = null);
+    public function getUser();
 
     /**
      * Set created_at

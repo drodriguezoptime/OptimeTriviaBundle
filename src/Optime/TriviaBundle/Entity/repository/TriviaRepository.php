@@ -13,9 +13,9 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Optime\TriviaBundle\Entity\BaseTrivia;
+use Optime\TriviaBundle\Entity\Trivia;
 
-class BaseTriviaRepository extends EntityRepository
+class TriviaRepository extends EntityRepository
 {
     /**
      * @return array
@@ -36,7 +36,7 @@ class BaseTriviaRepository extends EntityRepository
         $date = date('Y-m-d');
 
         $parameters = [
-            'state'         =>  BaseTrivia::ENABLED,
+            'state'         =>  Trivia::ENABLED,
             'startDate'     =>  $date,
             'endDate'       =>  $date
         ];
@@ -62,7 +62,7 @@ class BaseTriviaRepository extends EntityRepository
         }
 
         $query = $this->createQueryBuilder('t')
-            ->select('t, (SELECT DISTINCT COUNT(ta) FROM BaseTrivia ta where ta.trivia = t) as quantity');
+            ->select('t, (SELECT DISTINCT COUNT(ta) FROM Trivia ta where ta.trivia = t) as quantity');
 
         if (isset($data["name"]) and !empty($data["name"])) {
             $query->andWhere(
@@ -86,7 +86,7 @@ class BaseTriviaRepository extends EntityRepository
                 ->setParameter("state", $data["state"]);
         } else {
             $query->andWhere("t.state = :state")
-                ->setParameter("state", BaseTrivia::ENABLED);
+                ->setParameter("state", Trivia::ENABLED);
         }
 
         $query->orderBy("t.id", "DESC");
@@ -122,10 +122,10 @@ class BaseTriviaRepository extends EntityRepository
         $query = $this->getEntityManager()->createQuery(
             'SELECT t
                 FROM
-                    Optime\TriviaBundle\Entity\BaseTrivia t
+                    Optime\TriviaBundle\Entity\Trivia t
                 WHERE
                     NOT EXISTS (
-                        SELECT ta FROM Optime\TriviaBundle\Entity\BaseTriviaAnswer ta WHERE ta.user = :userId AND ta.trivia = t.id
+                        SELECT ta FROM Optime\TriviaBundle\Entity\TriviaAnswer ta WHERE ta.user = :userId AND ta.trivia = t.id
                     )
                     AND t.state = :state
                     AND t.startDate <= :startDate
@@ -133,7 +133,7 @@ class BaseTriviaRepository extends EntityRepository
                 ORDER BY t.startDate'
         )->setParameters([
             'userId'    =>  $userId,
-            'state'     =>  BaseTrivia::ENABLED,
+            'state'     =>  Trivia::ENABLED,
             'startDate' =>  $date,
             'endDate'   =>  $date
         ]);

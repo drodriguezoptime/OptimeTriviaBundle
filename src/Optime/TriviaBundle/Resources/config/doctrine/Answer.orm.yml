@@ -1,6 +1,6 @@
-Optime\TriviaBundle\Entity\BaseAnswer:
+Optime\TriviaBundle\Entity\Answer:
   type: entity
-  repositoryClass: Optime\TriviaBundle\Entity\repository\BaseAnswerRepository
+  repositoryClass: Optime\TriviaBundle\Entity\repository\AnswerRepository
   table: optime_trivia_answers
   id:
     id:
@@ -25,5 +25,5 @@ Optime\TriviaBundle\Entity\BaseAnswer:
       column: updated_at
   manyToOne:
     question:
-      targetEntity: Optime\TriviaBundle\Entity\BaseQuestion
+      targetEntity: Optime\TriviaBundle\Entity\Question
       inversedBy: answers

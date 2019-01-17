@@ -11,7 +11,7 @@ namespace Optime\TriviaBundle\Entity\repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class BaseTriviaAnswerRepository extends EntityRepository
+class TriviaAnswerRepository extends EntityRepository
 {
     /**
      * Validate trivia taken

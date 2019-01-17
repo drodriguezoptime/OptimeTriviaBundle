@@ -1,3 +1,7 @@
+optime_trivia:
+  class:
+    user: AppBundle\Entity\User
+
 doctrine:
   orm:
     entity_managers:

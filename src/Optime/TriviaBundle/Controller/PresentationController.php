@@ -10,8 +10,8 @@
 namespace Optime\TriviaBundle\Controller;
 
 
-use Optime\TriviaBundle\Entity\BaseAnswer;
-use Optime\TriviaBundle\Entity\BaseTrivia;
+use Optime\TriviaBundle\Entity\Answer;
+use Optime\TriviaBundle\Entity\Trivia;
 use Optime\TriviaBundle\Service\PresentationActions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +19,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PresentationController extends Controller
 {
-    /**
-     * @return Response
-     */
-    public function listAction(): Response
+
+    public function listAction()
     {
         $action = $this->container->get(PresentationActions::class);
 
-        return $action->listAction();
+        return new Response($action->listAction());
     }
 
     /**

@@ -2,11 +2,11 @@
 
 namespace Optime\TriviaBundle\DependencyInjection;
 
+use Optime\TriviaBundle\Mapper\DoctrineCollector;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -39,16 +39,20 @@ class OptimeTriviaExtension extends Extension
             }
         }
 
-        $collector->addAssociation($config['class']['user'], 'mapOneToMany', [
-            'fieldName' =>  'triviaAnswers',
-            'targetEntity'  =>  'OptimeTriviaBundle\Entity\TriviaAnswers',
-            'mappedBy'  =>  'user'
-        ]);
-
-        $collector->addAssociation('Optime\TriviaAnswer\Entity\TriviaAnswer', 'mapManyToOne', [
+        $collector->addAssociation('Optime\TriviaBundle\Entity\TriviaAnswer', 'mapManyToOne', [
             'fieldName'         =>  'user',
             'targetEntity'      =>  $config['class']['user'],
-            'inversedBy'        =>  'triviaAnswers'
+            'cascade' => [
+            ],
+            'mappedBy'          => null,
+            'inversedBy'        =>  null,
+            'joinColumns' => [
+                [
+                    'name' => 'user_id',
+                    'referencedColumnName' => 'id',
+                    'nullable' => false,
+                ],
+            ],
         ]);
     }
 }

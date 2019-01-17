@@ -9,20 +9,14 @@
 
 namespace Optime\TriviaBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Optime\TriviaBundle\Model\Question as ModelQuestion;
+use Optime\TriviaBundle\Model\Answer as ModelAnswer;
 
-abstract class BaseQuestion extends ModelQuestion
+class Answer extends ModelAnswer
 {
     protected $id;
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function __construct()
-    {
-        $this->answers = new ArrayCollection();
     }
 }
