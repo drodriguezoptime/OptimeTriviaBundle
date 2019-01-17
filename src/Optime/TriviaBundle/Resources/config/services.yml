@@ -1,4 +1,7 @@
 services:
-#    optime_trivia.example:
-#        class: Optime\TriviaBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  Optime\TriviaBundle\Service\PresentationActions:
+    class: Optime\TriviaBundle\Service\PresentationActions
+    public: true
+    arguments:
+      $entityManager: "@doctrine.orm.entity_manager"
+      $currentUser: "@=service('security.token_storage').getToken().getUser()"

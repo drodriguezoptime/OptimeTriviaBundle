@@ -10,9 +10,12 @@
 namespace Optime\TriviaBundle\Controller;
 
 
+use Optime\TriviaBundle\Entity\BaseAnswer;
 use Optime\TriviaBundle\Entity\BaseTrivia;
+use Optime\TriviaBundle\Service\PresentationActions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class PresentationController extends Controller
 {
@@ -21,12 +24,26 @@ class PresentationController extends Controller
      */
     public function listAction(): Response
     {
-        $triviaRepository = $this->getDoctrine()->getRepository(BaseTrivia::class);
-        $trivias = $triviaRepository->getNotTakenTrivias($this->getUser()->getId());
+        $action = $this->container->get(PresentationActions::class);
 
-        return $this->render('@OptimeTrivia/Presentation/list.html.twig', [
-            'trivias'   =>  $trivias,
-            'user'      =>  $this->getUser()
-        ]);
+        return $action->listAction();
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function recentTriviaAction(Request $request)
+    {
+        $triviaRepository = $this->getDoctrine()->getRepository(BaseTrivia::class);
+        $answerRepository = $this->getDoctrine()->getRepository(BaseAnswer::class);
+        $userId = $this->getUser()->getId();
+        $lastTrivia = $triviaRepository->getLastOneNotTakenTrivia($userId);
+
+        if (count($lastTrivia) === 0) {
+            return $this->render('@OptimeTrivia/Presentation/trivia.html.twig');
+        }
+
+//        $trivia = new TriviaInterface();
     }
 }

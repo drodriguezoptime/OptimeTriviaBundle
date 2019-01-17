@@ -26,8 +26,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('user_doctrine_entity')
-                ->isRequired()->end()
+                ->arrayNode('class')
+                ->children()
+                    ->scalarNode('user')
+                    ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

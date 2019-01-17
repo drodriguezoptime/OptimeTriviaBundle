@@ -32,6 +32,3 @@ Optime\TriviaBundle\Entity\BaseTriviaAnswer:
     trivia:
       targetEntity: Optime\TriviaBundle\Entity\BaseTrivia
       inversedBy: triviaAnswers
-    user:
-      targetEntity: Optime\TriviaBundle\Entity\BaseUser
-      inverseBy: triviaAnswers

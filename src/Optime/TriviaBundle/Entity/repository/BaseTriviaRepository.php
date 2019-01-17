@@ -122,10 +122,10 @@ class BaseTriviaRepository extends EntityRepository
         $query = $this->getEntityManager()->createQuery(
             'SELECT t
                 FROM
-                    OptimeTriviaBundle\Entity\Trivia t
+                    Optime\TriviaBundle\Entity\BaseTrivia t
                 WHERE
                     NOT EXISTS (
-                        SELECT ta FROM OptimeTriviaBundle\Entity\TriviaAnswer ta WHERE ta.user = :userId AND ta.trivia = t.id
+                        SELECT ta FROM Optime\TriviaBundle\Entity\BaseTriviaAnswer ta WHERE ta.user = :userId AND ta.trivia = t.id
                     )
                     AND t.state = :state
                     AND t.startDate <= :startDate

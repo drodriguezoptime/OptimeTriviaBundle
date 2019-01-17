@@ -13,13 +13,6 @@ use Optime\TriviaBundle\Model\User as ModelUser;
 
 abstract class BaseUser extends ModelUser
 {
-    protected $id;
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function __construct()
     {
         $this->triviaAnswers = new ArrayCollection();
